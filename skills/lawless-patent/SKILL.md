@@ -3,7 +3,7 @@ name: lawless-patent
 description: >
   US patent search and freedom-to-operate (FTO) screening for a physical product, powered by
   the Lawless patent database MCP server (12M+ US granted patents with full claims, CPC,
-  assignees and maintenance-fee status). Use when the user wants to know which US patents
+  assignees and maintenance-fee status, plus ~8.4M published US applications). Use when the user wants to know which US patents
   a product might infringe, find patents similar to a product or patent, list a company's
   patents, check whether patents are still in force, or run a prior-art style search.
   Results are candidates for a lawyer's review, not legal conclusions.
@@ -56,6 +56,7 @@ Measured on real lawyer-verified cases: titles alone find ~1/3 of relevant paten
 | Lane | Tool | How to use it well |
 |---|---|---|
 | Titles | `search_titles(queries=[...])` | Give 4-10 phrasings at once: generic name ("back shaver"), functional name ("shaving apparatus"), patent-style ("device for …"), key components. Results are interleaved per phrasing; `by_query` shows which phrasing worked. |
+| Published applications | `search_titles(queries=[...], patent_type="application")` | Pending applications can matter more for FTO than granted patents (they may still issue). Default searches already include them; use this to look at applications only. |
 | Design patents | `search_titles(queries=[...], patent_type="design")` | Article names of 1-3 words ("door security bar", "neck pillow"). Design patents have no CPC in this database, so this is their main lane. |
 | Classification | `cpc_describe` → `cpc_browse(symbols, rank_terms=...)` | Guess 2-5 CPC main groups yourself (e.g. `B63H20/`), verify with `cpc_describe`, then browse with `rank_terms` = claim-style component words. `too_broad` → use finer groups. Also consider the *component's* class (a pillow's valve lives in F16K). |
 | Owners | `resolve_assignee(name)` → `list_by_assignee(organizations)` | Resolve brand/maker names to exact assignee strings first (a group often has several entities — pick all relevant ones). The product's own brand and its known competitors are high-value. |
@@ -67,7 +68,8 @@ Measured on real lawyer-verified cases: titles alone find ~1/3 of relevant paten
 - Each hit has `status`. Default `in_force_only=true` drops patents that are certainly lapsed or expired; `unknown`/`application_unverified` are kept. Pass `in_force_only=false` when you need old art or reference patents.
 - `relevance` (0-1) = similarity to the product, not an infringement verdict. Many patents in the same category score alike; read titles/claims to separate them.
 - `recall_rank` = position before re-ranking. `rerank.applied=false` + `reason` tells you why no re-ranking happened.
-- 0 results only means no match in this lane of this corpus. Coverage: **US granted patents up to 2025-12-30**; no pending applications, no non-US patents, no drawings. Say so in your report; never state "no patents exist".
+- Published applications (11-digit numbers) that were later granted are replaced by the granted patent (`via_publication` shows the original). Others have `status=application_unverified`: not granted as of the dataset, but pending vs. abandoned is not known — say so, and suggest checking USPTO Patent Center.
+- 0 results only means no match in this lane of this corpus. Coverage: **US granted patents up to 2025-12-30 plus published US applications**; no unpublished applications, no non-US patents, no drawings. Say so in your report; never state "no patents exist".
 - `get_patents(numbers)` returns title, owners, CPC, claim count and status with its basis. Status is rule-based — tell the user to verify legal status before relying on it.
 
 ## 4. Report
