@@ -1,0 +1,25 @@
+{
+  "name": "lawless-patent",
+  "version": "0.1.0",
+  "description": "US patent search and freedom-to-operate screening, backed by the Lawless patent database MCP server.",
+  "author": { "name": "Lawless", "url": "https://uselawless.com" },
+  "homepage": "https://uselawless.com",
+  "repository": "https://github.com/Lawless-Inc/skills",
+  "license": "MIT",
+  "userConfig": {
+    "api_key": {
+      "type": "string",
+      "title": "Lawless API Key",
+      "description": "Your Lawless patent search API key (starts with lwp_). Ask Lawless for one.",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "mcpServers": {
+    "lawless-patent": {
+      "type": "http",
+      "url": "https://patdb-mcp-production.up.railway.app/mcp",
+      "headers": { "Authorization": "Bearer ${user_config.api_key}" }
+    }
+  }
+}

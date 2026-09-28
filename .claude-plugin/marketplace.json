@@ -1,0 +1,12 @@
+{
+  "name": "lawless",
+  "description": "Lawless agent skills: US patent search and FTO screening for physical products.",
+  "owner": { "name": "Lawless", "url": "https://uselawless.com" },
+  "plugins": [
+    {
+      "name": "lawless-patent",
+      "description": "US patent search / FTO screening via the Lawless patent database MCP (12M+ granted patents, full claims, CPC, owners, in-force status).",
+      "source": "./"
+    }
+  ]
+}
