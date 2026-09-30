@@ -1,8 +1,7 @@
 # Lawless Agent Skills
 
-US patent search and freedom-to-operate (FTO) screening for physical products, for any AI agent.
-Backed by the Lawless patent database MCP server: 12M+ US granted patents with full claims, CPC
-classes, owners and in-force status. Results are candidates for a lawyer's review, not legal advice.
+Lawless IPDB: an agent-native IP database for any AI agent. Covers US granted patents (full claims,
+CPC, design USPC D classes, owners, maintenance status) and published US applications with official USPTO status.
 
 Read the skill: [SKILL.md](skills/lawless-patent/SKILL.md) ·
 [raw](https://raw.githubusercontent.com/Lawless-Inc/skills/main/skills/lawless-patent/SKILL.md)
@@ -31,11 +30,11 @@ Then add the MCP server to your client (the skill explains per-client config):
 
 ## Copy this to your agent
 
-> Install the Lawless patent search skill. If you're in Claude Code, run `claude plugin marketplace add Lawless-Inc/skills`, then `claude plugin install lawless-patent@lawless` and enter my Lawless API key when prompted. If you're in another agent, run `npx skills add Lawless-Inc/skills --skill lawless-patent`, then add the MCP server `https://patdb-mcp-production.up.railway.app/mcp` with header `Authorization: Bearer <my key>` as the skill describes. You can read the skill at https://raw.githubusercontent.com/Lawless-Inc/skills/main/skills/lawless-patent/SKILL.md. Then use it whenever I ask about patents or FTO for a product.
+> Install the Lawless IPDB skill. If you're in Claude Code, run `claude plugin marketplace add Lawless-Inc/skills`, then `claude plugin install lawless-patent@lawless` and enter my Lawless API key when prompted. If you're in another agent, run `npx skills add Lawless-Inc/skills --skill lawless-patent`, then add the MCP server `https://patdb-mcp-production.up.railway.app/mcp` with header `Authorization: Bearer <my key>` as the skill describes. You can read the skill at https://raw.githubusercontent.com/Lawless-Inc/skills/main/skills/lawless-patent/SKILL.md. Then use it whenever I ask to search or look up patents.
 
 ## Use
 
-> Here's my product: a portable steel door security bar that braces under the doorknob. Which US patents should I worry about?
+> Find US design patents for portable door security bars, and list any pending applications from the same owners.
 
 ## License
 

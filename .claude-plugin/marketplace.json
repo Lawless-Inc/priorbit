@@ -1,11 +1,14 @@
 {
   "name": "lawless",
-  "description": "Lawless agent skills: US patent search and FTO screening for physical products.",
-  "owner": { "name": "Lawless", "url": "https://uselawless.com" },
+  "description": "Lawless agent skills: an agent-native IP database for AI agents.",
+  "owner": {
+    "name": "Lawless",
+    "url": "https://uselawless.com"
+  },
   "plugins": [
     {
       "name": "lawless-patent",
-      "description": "US patent search / FTO screening via the Lawless patent database MCP (12M+ granted patents, full claims, CPC, owners, in-force status).",
+      "description": "Lawless IPDB: search US patents and published applications (CPC, design D classes, owners, claims, official status) over MCP.",
       "source": "./"
     }
   ]
