@@ -1,34 +1,24 @@
 ---
 name: lawless-patent
 description: >
-  US patent search and freedom-to-operate (FTO) screening for a physical product, powered by
-  the Lawless patent database MCP server (12M+ US granted patents with full claims, CPC,
-  assignees and maintenance-fee status, plus ~8.4M published US applications). Use when the user wants to know which US patents
-  a product might infringe, find patents similar to a product or patent, list a company's
-  patents, check whether patents are still in force, or run a prior-art style search.
-  Results are candidates for a lawyer's review, not legal conclusions.
+  Lawless IPDB — an agent-native IP database exposed as an MCP server. Covers US granted patents
+  (full claims, CPC, design-patent USPC D classes, maintenance-fee status) and ~8.7M published US
+  applications with official USPTO status. Use it whenever the user wants to search, list, look up
+  or compare US patents and applications — by title wording, classification, owner/applicant,
+  claim language, or starting from known patents.
 ---
 
-# Lawless Patent Search
+# Lawless IPDB
 
-You have (or can connect) an MCP server named `lawless-patent`. It searches US granted patents
-and ranks candidates by relevance to *the user's product*. Your job: turn the product into good
-queries across several independent lanes, read the candidates, and report the ones worth a
-lawyer's time — with patent numbers, why each matters, and what to check next.
+You have (or can connect) an MCP server that searches a US patent and published-application database.
+There is no required workflow: combine the tools however fits the user's question.
 
-## 0. Make sure the server is connected
+## Connect
 
-Check whether tools like `search_titles` / `set_product` are available.
-If not, the user needs an API key from Lawless (ask them; never invent one) and the server added
-to their client:
+If tools like `search_titles` are missing, the user needs a Lawless API key (ask them; never invent one):
 
-- **Claude Code** (preferred: the plugin wires this up automatically):
-  `claude plugin marketplace add Lawless-Inc/skills` then `claude plugin install lawless-patent@lawless` (prompts for the key)
-  Manual alternative:
-  `claude mcp add --transport http lawless-patent https://patdb-mcp-production.up.railway.app/mcp --header "Authorization: Bearer <API_KEY>"`
-- **Cursor / Windsurf / VS Code / other MCP clients**: add an HTTP (streamable) MCP server
-  - url: `https://patdb-mcp-production.up.railway.app/mcp`
-  - header: `Authorization: Bearer <API_KEY>`
+- **Claude Code**: `claude plugin marketplace add Lawless-Inc/skills` then `claude plugin install lawless-patent@lawless` (prompts for the key).
+- **Other MCP clients (Cursor, Windsurf, VS Code, …)**: HTTP MCP server `https://patdb-mcp-production.up.railway.app/mcp` with header `Authorization: Bearer <API_KEY>`.
 - **Codex** (`~/.codex/config.toml`):
   ```toml
   [mcp_servers.lawless-patent]
@@ -36,45 +26,26 @@ to their client:
   bearer_token_env_var = "LAWLESS_PATENT_API_KEY"
   ```
 
-Store the key in an environment variable or the client's secret store, never in a committed file.
-A `401` means the key is missing or wrong; `rate_limited` / `quota_exceeded` mean slow down or wait.
+`401` = missing/wrong key; `rate_limited` / `quota_exceeded` = slow down or wait.
 
-## 1. Set the product first
+## Tools
 
-Call `set_product` once per product. Every search after it is re-ranked for relevance to this product;
-without it you only get raw recall order.
+| Tool | What it does |
+|---|---|
+| `describe_corpus_tool` | What the database covers and each source's cut-off date. Check it once when coverage matters. |
+| `search_titles(queries=[...])` | Title search over patents and applications. Give several phrasings at once; results are interleaved per phrasing (`by_query` shows which worked). `patent_type`: `design`, `utility`, or `application`. |
+| `cpc_describe` / `cpc_browse` | Check CPC symbols, then list a class (optionally ranked by claim words via `rank_terms`). `too_broad` returns finer symbols. |
+| `design_classes` / `design_class_browse` | Design patents use USPC D classes, not CPC. Search class titles by keyword or inspect a class (`D28/`), then list it. About half of the D subclasses have no title, so browse the main class when keyword search misses. |
+| `resolve_assignee` / `list_by_assignee` | Resolve a company name to exact owner/applicant strings (counts shown for patents and applications), then list them. |
+| `search_claims(terms, within_cpc / within_assignees / within_patents)` | Claim-language search; best inside a scope. |
+| `more_like_these(patent_numbers)` | Neighbours of known documents: same title wording, owner, CPC, or D class. |
+| `get_patents(numbers)` | Title, dates, owners, CPC / D classes, claim count, status with its basis. |
+| `set_product(text)` | Optional: a short description to rank results by relevance to it (`rerank=false` turns it off per call). |
+| `explain_terms` / `suggest_terms` | How common each word is; corpus vocabulary to try next. |
 
-- Best: `text` = what the product is, its core structure/mechanism, materials, how it's used.
-- `url` (a product page) works only after `bind_oxylabs(username, password)` with the user's own
-  Oxylabs account. If they don't have one, write the `text` yourself from what they told you.
-- Read back `product_profile` in the response. A wrong profile silently ruins the ranking.
+## Reading results
 
-## 2. Search several lanes — no single lane finds everything
-
-Measured on real lawyer-verified cases: titles alone find ~1/3 of relevant patents; combining lanes roughly doubles that.
-
-| Lane | Tool | How to use it well |
-|---|---|---|
-| Titles | `search_titles(queries=[...])` | Give 4-10 phrasings at once: generic name ("back shaver"), functional name ("shaving apparatus"), patent-style ("device for …"), key components. Results are interleaved per phrasing; `by_query` shows which phrasing worked. |
-| Published applications | `search_titles(queries=[...], patent_type="application")` | Pending applications can matter more for FTO than granted patents (they may still issue). Default searches already include them; use this to look at applications only. |
-| Design patents | `search_titles(queries=[...], patent_type="design")` | Article names of 1-3 words ("door security bar", "neck pillow"). Design patents have no CPC in this database, so this is their main lane. |
-| Classification | `cpc_describe` → `cpc_browse(symbols, rank_terms=...)` | Guess 2-5 CPC main groups yourself (e.g. `B63H20/`), verify with `cpc_describe`, then browse with `rank_terms` = claim-style component words. `too_broad` → pick finer groups from the returned `finer_symbols`. Also consider the *component's* class (a pillow's valve lives in F16K). |
-| Owners | `resolve_assignee(name)` → `list_by_assignee(organizations)` | Resolve brand/maker names to exact assignee strings first (a group often has several entities — pick all relevant ones). The product's own brand and its known competitors are high-value. |
-| Claims | `search_claims(terms, within_cpc=[...] / within_assignees=[...])` | Best inside a scope. Without a scope it searches all claims: slow and weak — last resort. |
-| Expansion | `more_like_these(patent_numbers)` | After you've confirmed 2-5 core patents: same-title, same-owner and co-classified neighbours. |
-
-## 3. Read results correctly
-
-- Each hit has `status`. Default `in_force_only=true` drops patents that are certainly lapsed or expired and applications that are abandoned; `unknown`/`application_unverified` are kept. Pass `in_force_only=false` when you need old art or reference patents.
-- `relevance` (0-1) = similarity to the product, not an infringement verdict. Many patents in the same category score alike; read titles/claims to separate them.
-- `recall_rank` = position before re-ranking. `rerank.applied=false` + `reason` tells you why no re-ranking happened.
-- Published applications (11-digit numbers) carry the official USPTO status: `granted` ones are replaced by the granted patent (`via_publication` shows the original); `abandoned` ones are dropped by default; `allowed` means a notice of allowance was issued — treat it as about to become a patent; `pending` means under examination. `application_unverified` = no official status on file (filed before 2001) — say so and suggest checking USPTO Patent Center.
-- 0 results only means no match in this lane of this corpus. Coverage: **US granted patents up to 2025-12-30 plus published US applications**; no unpublished applications, no non-US patents, no drawings. Say so in your report; never state "no patents exist".
-- `get_patents(numbers)` returns title, owners, CPC, claim count and status with its basis. Status is rule-based — tell the user to verify legal status before relying on it.
-
-## 4. Report
-
-For each patent worth attention: number (link `https://patents.google.com/patent/US<number>`), title,
-owner, status, one-line reason tied to the product's features, and which lane found it.
-Then list what you could not cover (non-US, pending, design look-alikes that need images) and the
-searches you would run next. Keep the user in charge of legal judgment.
+- Every hit has a `status` with a `status_basis`. Results are **not filtered by default**; pass `in_force_only=true` to drop lapsed, expired and abandoned documents.
+- Application statuses come from USPTO: `pending`, `allowed` (notice of allowance issued), `abandoned`. Granted applications are replaced by their patent (`via_publication` names the original).
+- 0 results means no match in that search, not that nothing exists.
+- `relevance` (only when a profile is set) is similarity to that description, not a legal judgment.
