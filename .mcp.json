@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "lawless-patent": {
+    "priorbit": {
       "type": "http",
       "url": "https://patdb-mcp-production.up.railway.app/mcp"
     }

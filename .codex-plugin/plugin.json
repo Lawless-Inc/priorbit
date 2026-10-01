@@ -1,20 +1,33 @@
 {
-  "name": "lawless-patent",
+  "name": "priorbit",
   "version": "0.3.0",
-  "description": "Priorbit IP database for agents: US patents (full claims), published applications, trademarks, owners and inventors, live USPTO documents and drawings, and e-commerce product pages. Use it for FTO, prior art, design comparison, patent status and ownership, brand tracing and trademark clearance.",
-  "author": { "name": "Lawless", "url": "https://uselawless.com" },
+  "description": "Priorbit — the IP database for agents: US patents (full claims), published applications, trademarks, owners and inventors, live USPTO documents and drawings, and e-commerce product pages. Use it for FTO, prior art, design comparison, patent status and ownership, brand tracing and trademark clearance.",
+  "author": {
+    "name": "Lawless",
+    "url": "https://uselawless.com"
+  },
   "homepage": "https://uselawless.com",
   "repository": "https://github.com/Lawless-Inc/skills",
   "license": "MIT",
-  "keywords": ["patent", "trademark", "fto", "prior-art", "uspto", "ip", "mcp"],
+  "keywords": [
+    "patent",
+    "trademark",
+    "fto",
+    "prior-art",
+    "uspto",
+    "ip",
+    "mcp"
+  ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Lawless Patent",
+    "displayName": "Priorbit",
     "shortDescription": "US patents and trademarks for your agent",
     "longDescription": "Search and read US patents, applications and trademarks, trace brands to the companies and inventors behind them, compare design patent drawings, and run FTO, prior art and trademark clearance workflows with an audit trail.",
     "developerName": "Lawless",
     "category": "Research",
-    "capabilities": ["Read"],
+    "capabilities": [
+      "Read"
+    ],
     "websiteURL": "https://uselawless.com",
     "defaultPrompt": [
       "Do a US FTO screening for https://www.amazon.com/dp/B0GSYWD5RT",

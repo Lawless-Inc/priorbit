@@ -1,11 +1,19 @@
 {
   "name": "lawless",
-  "interface": { "displayName": "Lawless" },
+  "interface": {
+    "displayName": "Lawless"
+  },
   "plugins": [
     {
-      "name": "lawless-patent",
-      "source": { "source": "local", "path": "./" },
-      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "name": "priorbit",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
       "category": "Research"
     }
   ]

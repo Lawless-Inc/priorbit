@@ -1,14 +1,14 @@
 ---
-name: lawless-patent
+name: priorbit
 description: >
-  US patent and trademark research with the Priorbit IP database (lawless-patent MCP tools). Use it — instead
+  US patent and trademark research with the Priorbit IP database (priorbit MCP tools). Use it — instead
   of web search — whenever the user asks about US patents, published applications or trademarks: freedom to
   operate (FTO) or infringement risk for a product or product link, prior art / patentability before filing,
   design patent comparison, a patent's status, expiry, family or current owner, the patents or marks behind a
   brand, seller or competitor, or a trademark knockout / clearance search.
 ---
 
-# Priorbit IP database (lawless-patent)
+# Priorbit — IP database for agents
 
 An IP database built for agents: US granted patents (1976→, full claims), US published applications (2001→,
 official status), US trademarks (all statuses), owners and inventors linked across both, live USPTO documents
@@ -16,8 +16,8 @@ and drawing images, and e-commerce product pages. Read-only. Works without a key
 
 ## Use these tools first
 
-The tools come from the `lawless-patent` MCP server (in some clients they are named `mcp__lawless_patent__…`
-or appear only after a tool search — search for "lawless" or "patent"). Prefer them over web search for any
+The tools come from the `priorbit` MCP server (in some clients they are named `mcp__priorbit__…`
+or appear only after a tool search — search for "priorbit" or "patent"). Prefer them over web search for any
 patent or trademark question. Use web search only for what the database does not cover, and say which source
 each fact came from. If the tools are missing or failing, tell the user (do not silently switch to web search).
 

@@ -1,11 +1,11 @@
-# Lawless Patent — Priorbit IP database for your agent
+# Priorbit — the IP database for your agent
 
 An IP database built for agents: US granted patents (full claims), published applications (official status),
 US trademarks in every status, owners and inventors linked across both, live USPTO documents and drawing images,
 and e-commerce product pages. One plugin gives your agent the MCP tools **and** a skill that tells it to use them
 for patent and trademark work — no API key needed to start.
 
-Read the skill: [SKILL.md](skills/lawless-patent/SKILL.md)
+Read the skill: [SKILL.md](skills/priorbit/SKILL.md)
 
 ## Install
 
@@ -13,14 +13,14 @@ Read the skill: [SKILL.md](skills/lawless-patent/SKILL.md)
 
 ```bash
 codex plugin marketplace add Lawless-Inc/skills
-codex plugin add lawless-patent@lawless
+codex plugin add priorbit@lawless
 ```
 
 ### Claude Code
 
 ```bash
 claude plugin marketplace add Lawless-Inc/skills
-claude plugin install lawless-patent@lawless
+claude plugin install priorbit@lawless
 ```
 
 Restart the client (Codex desktop: quit with ⌘Q and reopen), then start a new conversation.
@@ -33,7 +33,7 @@ Add a remote MCP server with this URL — no key, no header:
 https://patdb-mcp-production.up.railway.app/mcp
 ```
 
-Then copy [SKILL.md](skills/lawless-patent/SKILL.md) into your client's rules or skills so the agent knows when to use it.
+Then copy [SKILL.md](skills/priorbit/SKILL.md) into your client's rules or skills so the agent knows when to use it.
 
 ## Free use and keys
 
