@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "lawless-patent": {
+      "type": "http",
+      "url": "https://patdb-mcp-production.up.railway.app/mcp"
+    }
+  }
+}

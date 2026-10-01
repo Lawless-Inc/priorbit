@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "lawless-patent",
-      "description": "Lawless IPDB: search US patents and published applications (CPC, design D classes, owners, claims, official status) over MCP.",
+      "description": "Priorbit IP database: US patents, applications and trademarks for your agent (MCP + skill). No key needed.",
       "source": "./"
     }
   ]

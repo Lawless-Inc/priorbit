@@ -1,14 +1,20 @@
-# Lawless Agent Skills
+# Lawless Patent — Priorbit IP database for your agent
 
-Lawless IPDB: an agent-native IP database for any AI agent. Covers US granted patents (full claims,
-CPC, design USPC D classes, owners, maintenance status) and published US applications with official USPTO status.
+An IP database built for agents: US granted patents (full claims), published applications (official status),
+US trademarks in every status, owners and inventors linked across both, live USPTO documents and drawing images,
+and e-commerce product pages. One plugin gives your agent the MCP tools **and** a skill that tells it to use them
+for patent and trademark work — no API key needed to start.
 
-Read the skill: [SKILL.md](skills/lawless-patent/SKILL.md) ·
-[raw](https://raw.githubusercontent.com/Lawless-Inc/skills/main/skills/lawless-patent/SKILL.md)
+Read the skill: [SKILL.md](skills/lawless-patent/SKILL.md)
 
 ## Install
 
-You need a Lawless API key (`lwp_…`). Ask Lawless for one.
+### Codex
+
+```bash
+codex plugin marketplace add Lawless-Inc/skills
+codex plugin add lawless-patent@lawless
+```
 
 ### Claude Code
 
@@ -17,24 +23,33 @@ claude plugin marketplace add Lawless-Inc/skills
 claude plugin install lawless-patent@lawless
 ```
 
-You'll be asked for your API key; it is stored in your system's secure store. Invoke explicitly with `/lawless-patent:lawless-patent`.
+Restart the client (Codex desktop: quit with ⌘Q and reopen), then start a new conversation.
 
-### Other agents (Cursor, Codex, Windsurf, …)
+### Other clients (Cursor, Claude.ai, Windsurf, …)
 
-```bash
-npx skills add Lawless-Inc/skills --skill lawless-patent
+Add a remote MCP server with this URL — no key, no header:
+
+```
+https://patdb-mcp-production.up.railway.app/mcp
 ```
 
-Then add the MCP server to your client (the skill explains per-client config):
-`https://patdb-mcp-production.up.railway.app/mcp` with header `Authorization: Bearer <your key>`.
+Then copy [SKILL.md](skills/lawless-patent/SKILL.md) into your client's rules or skills so the agent knows when to use it.
 
-## Copy this to your agent
+## Free use and keys
 
-> Install the Lawless IPDB skill. If you're in Claude Code, run `claude plugin marketplace add Lawless-Inc/skills`, then `claude plugin install lawless-patent@lawless` and enter my Lawless API key when prompted. If you're in another agent, run `npx skills add Lawless-Inc/skills --skill lawless-patent`, then add the MCP server `https://patdb-mcp-production.up.railway.app/mcp` with header `Authorization: Bearer <my key>` as the skill describes. You can read the skill at https://raw.githubusercontent.com/Lawless-Inc/skills/main/skills/lawless-patent/SKILL.md. Then use it whenever I ask to search or look up patents.
+Without a key each network gets a daily free quota (about five full FTO screenings a day). A key raises the
+limits (including product-page fetching, 10 a day per network without a key): use `https://patdb-mcp-production.up.railway.app/mcp?key=YOUR_KEY`.
+Ask Lawless at https://uselawless.com.
 
-## Use
+## Try
 
-> Find US design patents for portable door security bars, and list any pending applications from the same owners.
+> Do a US FTO screening for https://www.amazon.com/dp/B0GSYWD5RT
+
+> Who owns the patents behind the SECURADOOR brand?
+
+> Is US 10,435,928 still in force, when does it expire, and who owns it now?
+
+Results are research leads for an attorney, not legal opinions.
 
 ## License
 
