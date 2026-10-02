@@ -1,6 +1,6 @@
 {
   "name": "priorbit",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Priorbit — the IP database for agents: US patents (full claims), published applications, trademarks, owners and inventors, live USPTO documents and drawings, and e-commerce product pages. Use it for FTO, prior art, design comparison, patent status and ownership, brand tracing and trademark clearance.",
   "author": {
     "name": "Lawless",
@@ -32,6 +32,9 @@
     "defaultPrompt": [
       "Do a US FTO screening for https://www.amazon.com/dp/B0GSYWD5RT",
       "Who owns the patents behind the SECURADOOR brand?"
-    ]
+    ],
+    "logo": "./assets/logo.svg",
+    "composerIcon": "./assets/icon.svg",
+    "brandColor": "#2E6B52"
   }
 }
