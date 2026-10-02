@@ -2,7 +2,7 @@
 
 An IP database built for agents: US granted patents (full claims), published applications (official status),
 US trademarks in every status, owners and inventors linked across both, live USPTO documents and drawing images,
-and e-commerce product pages. One plugin gives your agent the MCP tools **and** a skill that tells it to use them
+prosecution file wrappers (office actions and responses as page images), PTAB trials, and e-commerce product pages. One plugin gives your agent the MCP tools **and** a skill that tells it to use them
 for patent and trademark work — no API key needed to start.
 
 Read the skill: [SKILL.md](skills/priorbit/SKILL.md)
@@ -48,6 +48,8 @@ Ask Lawless at https://uselawless.com.
 > Who owns the patents behind the SECURADOOR brand?
 
 > Is US 10,435,928 still in force, when does it expire, and who owns it now?
+
+> Knockout search for the mark VOLTREK in classes 9 and 12 — include marks that sound the same but are spelled differently.
 
 Results are research leads for an attorney, not legal opinions.
 
