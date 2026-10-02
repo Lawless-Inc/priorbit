@@ -34,13 +34,13 @@ each fact came from. If the tools are missing or failing, tell the user (do not 
 
 | Tool | Use it to |
 |---|---|
-| `search_patents` | find patents by title / abstract / claims, inside a CPC class, design class, owner or inventor, or `like_patents` |
+| `search_patents` | find patents by title / abstract / claims, inside a CPC class, design class, owner or inventor, or `like_patents`. Filters combine with AND; read `effective_filters`, `route` and `coverage_note` |
 | `get_patents` | read by number: status (with basis, source, as-of), claims verbatim, description with paragraph numbers, family, assignments, term |
 | `get_drawings` | drawing sheets as images — page with `skip` until no `more` |
 | `resolve_owner` | company / person / brand → exact owner names and inventor ids (`kind="brand"` traces a brand) |
 | `lookup_classes` | validate CPC / design class codes, find design classes by article name |
 | `search_trademarks` / `get_marks` | US marks by wording, design code or owner; full records |
-| `fetch_product_page` | product facts from Amazon, Shopify, 1688, Taobao (10 a day per network without a key) — use it instead of reading the product page with web search |
+| `fetch_product_page` | product facts from Amazon, Shopify, 1688, Taobao — `view_images` returns the photos as images (E-IMG ids), `documents` finds manual PDFs (10 a day per network without a key; cached repeats are free) — use it instead of web search |
 | `get_search_log` / `get_playbook` | audit trail of the task; workflows and coverage |
 
 ## Standards
@@ -48,7 +48,8 @@ each fact came from. If the tools are missing or failing, tell the user (do not 
 - Run several independent routes (words, classes, owners, similarity); stop when new rounds add nothing relevant
   and every shortlisted item is verified. Say which routes ran, how far, and which did not.
 - Quote claims verbatim with patent and claim number; cite figures by sheet and description paragraphs as [0012].
-- Every status statement carries its basis, source and as-of date; if `status_check.conflict` is true, show both.
+- Every status statement carries its basis, source and as-of date, and links its `official_links` (Patent Center, PDF, assignments; TSDR for marks); if `status_check.conflict` is true, show both.
+- For each claim element of a patent that needs attention, keep one evidence row: element (verbatim) · patent support (figure / [0012]) · product evidence (E-IMG-n, manual page + figure) · present / absent / unknown.
 - Label conclusions verified / inferred / unverified. A product page shows the seller's description, not internal structure.
 - 0 results means the route found nothing, not that nothing exists. Rank is a search signal, not infringement risk or proof of ownership.
 - Same-name inventors: if a candidate is flagged possibly_multiple_people, use only the relevant inventor_id_segment. A patent belongs to a brand's product only when claims or drawings match a product it sells.
