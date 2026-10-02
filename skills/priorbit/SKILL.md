@@ -36,11 +36,11 @@ each fact came from. If the tools are missing or failing, tell the user (do not 
 |---|---|
 | `search_patents` | find patents by title / abstract / claims, inside a CPC class, design class, owner or inventor, or `like_patents`. Filters combine with AND; read `effective_filters`, `route` and `coverage_note` |
 | `get_patents` | read by number: status (with basis, source, as-of), claims verbatim, description with paragraph numbers, family, assignments, term |
-| `get_drawings` | drawing sheets as images — page with `skip` until no `more` |
+| `get_drawings` | all drawing sheets on ONE overview image (default, each labelled by page); `mode="pages"` for full-size views |
 | `resolve_owner` | company / person / brand → exact owner names and inventor ids (`kind="brand"` traces a brand) |
 | `lookup_classes` | validate CPC / design class codes, find design classes by article name |
 | `search_trademarks` / `get_marks` | US marks by wording, design code or owner; full records |
-| `fetch_product_page` | product facts from Amazon, Shopify, 1688, Taobao — `view_images` returns the photos as images (E-IMG ids), `documents` finds manual PDFs (10 a day per network without a key; cached repeats are free) — use it instead of web search |
+| `fetch_product_page` | product facts from Amazon, Shopify, 1688, Taobao — `view_images` returns the photos on one labelled overview image (E-IMG ids), `documents` finds manual PDFs (10 a day per network without a key; cached repeats are free) — use it instead of web search |
 | `get_search_log` / `get_playbook` | audit trail of the task; workflows and coverage |
 
 ## Standards
