@@ -12,14 +12,14 @@ Read the skill: [SKILL.md](skills/priorbit/SKILL.md)
 ### Codex
 
 ```bash
-codex plugin marketplace add Lawless-Inc/skills
+codex plugin marketplace add Lawless-Inc/priorbit
 codex plugin add priorbit@lawless
 ```
 
 ### Claude Code
 
 ```bash
-claude plugin marketplace add Lawless-Inc/skills
+claude plugin marketplace add Lawless-Inc/priorbit
 claude plugin install priorbit@lawless
 ```
 
