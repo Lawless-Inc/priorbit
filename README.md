@@ -25,6 +25,22 @@ claude plugin install priorbit@lawless
 
 Restart the client (Codex desktop: quit with ⌘Q and reopen), then start a new conversation.
 
+### Claude desktop (Cowork)
+
+Two steps, about two minutes, no key. Cowork loads a plugin's skill but does not open the plugin's own remote
+connection, so the database is added once as a connector:
+
+1. **Plugin (the skill).** Settings → **Plugins** → **Add** → **Add from a repository** → `Lawless-Inc/priorbit`,
+   turn on *Sync automatically*, **Sync**, then make sure **priorbit** is enabled.
+2. **Connector (the database).** Settings → **Connectors** → **Add** → **Add custom connector**:
+   - Name: `Priorbit`
+   - MCP server URL: `https://patdb-mcp-production.up.railway.app/mcp` (exactly this — Cowork pairs the
+     connector with the plugin by URL)
+
+   **Continue** — no sign-in.
+3. Start a **new** Cowork task and ask, e.g. "Who owns the patents behind the SECURADOOR brand?" If the agent
+   says it cannot find the tools, check that Priorbit is switched on in the task's connector menu.
+
 ### Other clients (Cursor, Claude.ai, Windsurf, …)
 
 Add a remote MCP server with this URL — no key, no header:
