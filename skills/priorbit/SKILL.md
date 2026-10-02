@@ -48,7 +48,7 @@ each fact came from. If the tools are missing or failing, tell the user (do not 
 - Run several independent routes (words, classes, owners, similarity); stop when new rounds add nothing relevant
   and every shortlisted item is verified. Say which routes ran, how far, and which did not.
 - Quote claims verbatim with patent and claim number; cite figures by sheet and description paragraphs as [0012].
-- Every status statement carries its basis, source and as-of date, and links its `official_links` (Patent Center, PDF, assignments; TSDR for marks); if `status_check.conflict` is true, show both.
+- Every status statement carries its basis, source and as-of date, and links its `official_links` (Patent Center, PDF, assignments; TSDR for marks); if `status_check.conflict` is true, show both. Check `post_grant`: `surrendered_reissue` = the original number was surrendered and the rights are in the reissue (RE…); an issued reexamination certificate = claims may have been cancelled or amended, so read the certificate (`parts=["post_grant"]`) before treating claims as live.
 - For each claim element of a patent that needs attention, keep one evidence row: element (verbatim) · patent support (figure / [0012]) · product evidence (E-IMG-n, manual page + figure) · present / absent / unknown.
 - Label conclusions verified / inferred / unverified. A product page shows the seller's description, not internal structure.
 - 0 results means the route found nothing, not that nothing exists. Rank is a search signal, not infringement risk or proof of ownership.
