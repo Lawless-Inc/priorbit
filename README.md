@@ -1,5 +1,13 @@
 # Priorbit — the IP database for your agent
 
+> **Coming soon: Priorbit will require a free uselawless.com account.** Every plan is free during the beta.
+> Create one now at https://uselawless.com/login?returnTo=%2Faccount&mode=signup . After the change your AI app asks
+> you to sign in with it; in Cowork or claude.ai, set the Priorbit connector's Authentication to **Sign in now**.
+> Personal API keys keep working.
+>
+> **即将变更：Priorbit 将需要一个免费的 uselawless.com 账号**，测试期间所有方案都免费。现在就可以在上面的链接注册；
+> 切换后 AI 应用会请你用这个账号登录（Cowork / claude.ai 里把 Priorbit 连接器的 Authentication 改成 Sign in now）。个人 API 钥匙照常可用。
+
 An IP database built for agents: US granted patents (full claims), published applications (official status),
 US trademarks in every status, owners and inventors linked across both, live USPTO documents and drawing images,
 prosecution file wrappers (office actions and responses as page images), PTAB trials, and e-commerce product pages. One plugin gives your agent the MCP tools **and** a skill that tells it to use them
