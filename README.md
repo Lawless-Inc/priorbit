@@ -1,9 +1,9 @@
 # Priorbit — the IP database for your agent
 
 > **Priorbit needs a free uselawless.com account.** Your AI app asks you to sign in the first time it calls Priorbit;
-> create the account at https://uselawless.com/login?returnTo=%2Faccount&mode=signup (Google works). Go is free: 3,000 credits a month.
+> create the account at https://uselawless.com/login?returnTo=%2Faccount&mode=signup (Google works). Go is free: 200 credits a month.
 >
-> **Priorbit 需要一个免费的 uselawless.com 账号。** AI 应用第一次调用 Priorbit 时会请你登录；在上面的链接注册即可（可用 Google）。Go 免费，每月 3,000 积分。
+> **Priorbit 需要一个免费的 uselawless.com 账号。** AI 应用第一次调用 Priorbit 时会请你登录；在上面的链接注册即可（可用 Google）。Go 免费，每月 200 积分。
 
 An IP database built for agents: US granted patents (full claims), published applications (official status),
 US trademarks in every status, owners and inventors linked across both, live USPTO documents and drawing images,
@@ -66,8 +66,8 @@ Then copy [SKILL.md](skills/priorbit/SKILL.md) into your client's rules or skill
 
 ## Account and plans
 
-Every call needs a signed-in uselawless.com account. **Go** is free: 3,000 credits a month (about 100 a day; a status
-check is 1 credit, a search 2, a product page 5, playbooks free). Paid plans are one tenth of their standard rate
+Every call needs a signed-in uselawless.com account. **Go** is free: 200 credits a month (a status check is 1 credit, a search 2, a product page 5,
+playbooks free; enough for status checks and a dozen knockout searches, while a full FTO screening needs Plus). Paid plans are one tenth of their standard rate
 during the beta: **Plus** $5.90 for 20,000 credits, **Professional** $19.90 for 80,000. Details and billing terms:
 https://uselawless.com/pricing . Personal API keys issued by Lawless keep working (`…/mcp?key=YOUR_KEY`).
 

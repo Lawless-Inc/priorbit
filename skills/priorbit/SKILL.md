@@ -13,7 +13,7 @@ description: >
 
 An IP database built for agents: US granted patents (1976→, full claims), US published applications (2001→,
 official status), US trademarks (all statuses), owners and inventors linked across both, live USPTO documents
-and drawing images, and e-commerce product pages. Read-only. Needs a free uselawless.com account; the client signs in once (Go: 3,000 credits a month).
+and drawing images, and e-commerce product pages. Read-only. Needs a free uselawless.com account; the client signs in once (Go: 200 credits a month).
 
 ## Priorbit and web search — use both
 
