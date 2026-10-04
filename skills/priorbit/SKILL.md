@@ -28,6 +28,10 @@ or appear only after a tool search — search for "priorbit" or "patent").
   facts beyond the listing, and double-checks when something looks inconsistent or falls outside coverage.
 - Say which source each fact came from. If the Priorbit tools are missing or failing, tell the user rather
   than quietly answering from the web.
+- **Not signed in?** The server needs a free uselawless.com account. In Codex, if the `priorbit` server reports
+  "not logged in", run `codex mcp login priorbit` yourself: a browser tab opens, the user signs in and clicks Allow;
+  then retry the tool. In Claude Code ask the user to run `/mcp` → priorbit → Authenticate. In Cowork or claude.ai,
+  the Priorbit connector's Authentication must be set to "Sign in now".
 
 ## Start every real task the same way
 

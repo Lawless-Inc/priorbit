@@ -19,7 +19,12 @@ Read the skill: [SKILL.md](skills/priorbit/SKILL.md)
 ```bash
 codex plugin marketplace add Lawless-Inc/priorbit
 codex plugin add priorbit@lawless
+codex mcp login priorbit
 ```
+
+The three lines can be pasted straight into the Codex chat box; Codex runs them. The last one opens a browser tab:
+sign in to uselawless.com (Google or email) and click **Allow**. Once per computer — and if you skip it, Codex runs
+it for you the first time it needs Priorbit.
 
 ### Claude Code
 
@@ -27,6 +32,9 @@ codex plugin add priorbit@lawless
 claude plugin marketplace add Lawless-Inc/priorbit
 claude plugin install priorbit@lawless
 ```
+
+Then, in a new session, type `/mcp`, pick **priorbit** and choose **Authenticate**: a browser tab opens, sign in to
+uselawless.com and click **Allow**.
 
 Restart the client (Codex desktop: quit with ⌘Q and reopen), then start a new conversation.
 
