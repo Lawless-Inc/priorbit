@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "priorbit",
-      "description": "Priorbit IP database: US patents, applications and trademarks for your agent (MCP + skill). No key needed.",
+      "description": "Priorbit IP database: US patents, applications and trademarks for your agent (MCP + skill). Free account, sign in once.",
       "source": "./"
     }
   ]

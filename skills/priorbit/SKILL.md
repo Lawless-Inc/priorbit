@@ -13,7 +13,7 @@ description: >
 
 An IP database built for agents: US granted patents (1976→, full claims), US published applications (2001→,
 official status), US trademarks (all statuses), owners and inventors linked across both, live USPTO documents
-and drawing images, and e-commerce product pages. Read-only. Works without a key (daily free quota per network).
+and drawing images, and e-commerce product pages. Read-only. Needs a free uselawless.com account; the client signs in once (Go: 3,000 credits a month).
 
 ## Priorbit and web search — use both
 
@@ -49,7 +49,7 @@ or appear only after a tool search — search for "priorbit" or "patent").
 | `resolve_owner` | company / person / brand → exact owner names and inventor ids (`kind="brand"` traces a brand) |
 | `lookup_classes` | validate CPC / design class codes, find design classes by article name |
 | `search_trademarks` / `get_marks` | US marks by wording (`similar`, `sounds_like`, `exact`, `contains`), design code or owner; full records |
-| `fetch_product_page` | product facts from Amazon, Shopify, 1688, Taobao — `view_images` returns the photos on one labelled overview image (E-IMG ids), `documents` finds manual PDFs (10 a day per network without a key; cached repeats are free) — try it first on these marketplaces; use the web for anything else about the product |
+| `fetch_product_page` | product facts from Amazon, Shopify, 1688, Taobao — `view_images` returns the photos on one labelled overview image (E-IMG ids), `documents` finds manual PDFs (5 credits a page; cached repeats are free) — try it first on these marketplaces; use the web for anything else about the product |
 | `get_search_log` / `get_playbook` | audit trail of the task; workflows and coverage |
 
 ## Standards
