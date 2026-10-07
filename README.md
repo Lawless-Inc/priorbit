@@ -83,6 +83,14 @@ https://uselawless.com/pricing . Personal API keys issued by Lawless keep workin
 
 Results are research leads for an attorney, not legal opinions.
 
+## Contact
+
+- Email: zhiyuanren@uselawless.com (English or Chinese) · https://uselawless.com/contact
+- Support for signed-in users: the Account page at https://uselawless.com/account
+- Security: https://uselawless.com/.well-known/security.txt
+- MCP endpoint: `https://patdb-mcp-production.up.railway.app/mcp` · registry name `com.uselawless/priorbit` (see `server.json`)
+- Agent setup document: https://uselawless.com/skill.md
+
 ## License
 
 MIT
