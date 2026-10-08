@@ -3,7 +3,7 @@
   "name": "com.uselawless/priorbit",
   "title": "Priorbit — IP database for agents",
   "description": "US patents, applications and trademarks with full claims, owners, drawings and live USPTO records.",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "websiteUrl": "https://uselawless.com",
   "repository": {
     "url": "https://github.com/Lawless-Inc/priorbit",

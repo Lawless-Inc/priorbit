@@ -19,12 +19,13 @@ Read the skill: [SKILL.md](skills/priorbit/SKILL.md)
 ```bash
 codex plugin marketplace add Lawless-Inc/priorbit
 codex plugin add priorbit@lawless
-codex mcp login priorbit
 ```
 
-The three lines can be pasted straight into the Codex chat box; Codex runs them. The last one opens a browser tab:
-sign in to uselawless.com (Google or email) and click **Allow**. Once per computer — and if you skip it, Codex runs
-it for you the first time it needs Priorbit.
+Both lines can be pasted straight into the Codex chat box; Codex runs them. During the install Codex opens its
+own sign-in window: sign in to uselawless.com (Google or email) and click **Allow**. Once per computer.
+
+Only if no sign-in window appeared, run `codex mcp login priorbit` — it opens one browser tab. Do not run it while
+a Codex sign-in window is already open; that is how you end up with two login windows at once.
 
 ### Claude Code
 
