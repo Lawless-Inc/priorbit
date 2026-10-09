@@ -84,6 +84,25 @@ https://uselawless.com/pricing . Personal API keys issued by Lawless keep workin
 
 Results are research leads for an attorney, not legal opinions.
 
+## CLI and Python SDK
+
+For scripts and pipelines (Codex, shell, notebooks): a thin package generated from the server's own tool list — NDJSON out, one line per result.
+
+```bash
+pip install "git+https://github.com/Lawless-Inc/priorbit#subdirectory=sdk/python"
+priorbit login                                   # free account, once
+priorbit search_patents --queries "door security bar" --patent_type design --k 10 | jq .pn
+priorbit get_patents --patent_numbers 7532200,D949612 --raw
+```
+
+```python
+from priorbit import Priorbit
+p = Priorbit()
+p.search_trademarks(text="WOBBLY LIFE", k=5)
+```
+
+Details: `sdk/python/README.md`.
+
 ## Contact
 
 - Email: zhiyuanren@uselawless.com (English or Chinese) · https://uselawless.com/contact

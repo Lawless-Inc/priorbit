@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "priorbit"
+version = "0.1.0"
+description = "Priorbit — the IP database for agents. Thin CLI + Python SDK over the Priorbit MCP server (US patents, applications, trademarks). NDJSON output for pipelines."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Lawless, Inc.", email = "zhiyuanren@uselawless.com" }]
+keywords = ["patents", "trademarks", "uspto", "mcp", "ip", "fto", "prior-art"]
+classifiers = ["Programming Language :: Python :: 3", "License :: OSI Approved :: MIT License", "Operating System :: OS Independent", "Topic :: Scientific/Engineering :: Information Analysis"]
+dependencies = []
+
+[project.urls]
+Homepage = "https://uselawless.com"
+Documentation = "https://uselawless.com/docs"
+Source = "https://github.com/Lawless-Inc/priorbit"
+
+[project.scripts]
+priorbit = "priorbit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["priorbit*"]
