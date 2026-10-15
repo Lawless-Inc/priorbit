@@ -3,16 +3,25 @@
   "name": "com.uselawless/priorbit",
   "title": "Priorbit — IP database for agents",
   "description": "US patents, applications and trademarks with full claims, owners, drawings and live USPTO records.",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "websiteUrl": "https://uselawless.com",
   "repository": {
     "url": "https://github.com/Lawless-Inc/priorbit",
     "source": "github"
   },
   "icons": [
-    { "src": "https://uselawless.com/icon.svg", "mimeType": "image/svg+xml", "sizes": ["any"] }
+    {
+      "src": "https://uselawless.com/icon.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": [
+        "any"
+      ]
+    }
   ],
   "remotes": [
-    { "type": "streamable-http", "url": "https://patdb-mcp-production.up.railway.app/mcp" }
+    {
+      "type": "streamable-http",
+      "url": "https://patdb-mcp-production.up.railway.app/mcp"
+    }
   ]
 }

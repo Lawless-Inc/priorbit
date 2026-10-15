@@ -51,7 +51,7 @@ or appear only after a tool search — search for "priorbit" or "patent").
 | Tool | Use it to |
 |---|---|
 | `search_patents` | find patents by title / abstract / claims, inside a CPC class, design class, owner or inventor, or `like_patents`. Filters combine with AND; read `effective_filters`, `route` and `coverage_note` |
-| `get_patents` | read by number: status (with basis, source, as-of), claims verbatim, description with paragraph numbers, family, assignments, term, prosecution file (`file_wrapper`), PTAB trials (`ptab`) |
+| `get_patents` | read by number: status (with basis, source, as-of), claims verbatim, description with paragraph numbers, family, assignments, term, `prosecution` (each office action: rejected claims by statute, examiner-cited references, the examiner's argument; plus which other applications' examiners cited this number), prosecution file as documents (`file_wrapper`), PTAB trials (`ptab`) |
 | `get_drawings` | all drawing sheets on ONE overview image (default, each labelled by page); `mode="pages"` for full-size views; `document_url` renders an office action / response from the file wrapper as page images |
 | `resolve_owner` | company / person / brand → exact owner names and inventor ids (`kind="brand"` traces a brand) |
 | `lookup_classes` | validate CPC / design class codes, find design classes by article name |
@@ -64,6 +64,7 @@ or appear only after a tool search — search for "priorbit" or "patent").
 - Run several independent routes (words, classes, owners, similarity); stop when new rounds add nothing relevant
   and every shortlisted item is verified. Say which routes ran, how far, and which did not.
 - Quote claims verbatim with patent and claim number; cite figures by sheet and description paragraphs as [0012].
+- Before calling a pending application a risk, read `get_patents(parts=["prosecution"])`: how many rounds, which claims were rejected under which statute, what the examiner relied on. The same part gives examiner-vetted prior art for invalidity and shows what a granted claim gave up during prosecution. Claim lists there are parsed from the action text; confirm wording in `file_wrapper` before quoting.
 - Every status statement carries its basis, source and as-of date, and links its `official_links` (Patent Center, PDF, assignments; TSDR for marks); if `status_check.conflict` is true, show both. Check `post_grant`: `surrendered_reissue` = the original number was surrendered and the rights are in the reissue (RE…); an issued reexamination certificate = claims may have been cancelled or amended, so read the certificate (`parts=["post_grant"]`) before treating claims as live.
 - For each claim element of a patent that needs attention, keep one evidence row: element (verbatim) · patent support (figure / [0012]) · product evidence (E-IMG-n, manual page + figure) · present / absent / unknown.
 - Label conclusions verified / inferred / unverified. A product page shows the seller's description, not internal structure.
