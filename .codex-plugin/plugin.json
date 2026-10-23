@@ -1,7 +1,7 @@
 {
   "name": "priorbit",
-  "version": "0.4.5",
-  "description": "Priorbit — the IP database for agents: US patents (full claims), published applications, trademarks, owners and inventors, live USPTO documents and drawings, and e-commerce product pages. Use it for FTO, prior art, design comparison, patent status and ownership, brand tracing and trademark clearance.",
+  "version": "0.4.6",
+  "description": "Priorbit — the IP database for agents: US patents (full claims), published applications, trademarks, owners and inventors, live USPTO documents and drawings, and e-commerce product pages. Use it for FTO, prior art, design comparison, patent status and ownership, brand tracing, trademark clearance, US application drafting, CIPs and Chinese → US filings.",
   "author": {
     "name": "Lawless",
     "url": "https://uselawless.com"
@@ -22,7 +22,7 @@
   "interface": {
     "displayName": "Priorbit",
     "shortDescription": "US patents and trademarks for your agent",
-    "longDescription": "Search and read US patents, applications and trademarks, trace brands to the companies and inventors behind them, compare design patent drawings, and run FTO, prior art and trademark clearance workflows with an audit trail.",
+    "longDescription": "Search and read US patents, applications and trademarks, trace brands to the companies and inventors behind them, compare design patent drawings, run FTO, prior art and trademark clearance workflows with an audit trail, and draft US applications, CIPs and Chinese → US filings with a Chinese → English patent glossary.",
     "developerName": "Lawless",
     "category": "Research",
     "capabilities": [

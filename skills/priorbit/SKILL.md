@@ -5,8 +5,10 @@ description: >
   user asks about US patents, published applications or trademarks: freedom to operate (FTO) or infringement
   risk for a product or product link, prior art / patentability before filing, invalidity of a patent, design
   patent comparison, a patent's status, expiry, family or current owner, the patents or marks behind a brand,
-  seller or competitor, or a trademark knockout / clearance search. It is the authoritative source for US
-  records; keep using web search alongside it for everything else.
+  seller or competitor, a trademark knockout / clearance search, drafting a US patent application, a
+  continuation-in-part (CIP), or turning a Chinese patent application into a US filing (translation, claim
+  rework, Chinese → English patent terms). It is the authoritative source for US records; keep using web
+  search alongside it for everything else.
 ---
 
 # Priorbit — IP database for agents
@@ -39,7 +41,8 @@ or appear only after a tool search — search for "priorbit" or "patent").
 ## Start every real task the same way
 
 1. Call `get_playbook(name)` for the matching workflow: `fto`, `prior_art`, `invalidity`, `brand_trace`,
-   `patent_checkup`, `design_compare`, `trademark_clearance` (or `coverage` for what the data covers). It sets
+   `patent_checkup`, `design_compare`, `trademark_clearance`, `cip` (continuation-in-part), `cn_to_us` (Chinese
+   application → US filing), `drafting` (US application drafting) — or `coverage` for what the data covers. It sets
    the routes, the minimum for "done" and what the report must contain — add routes of your own, inside and
    outside this database. The order of steps is yours.
 2. The first search returns a `task_id`. Pass it on every later call of the same work. Omit it only when the
@@ -57,7 +60,7 @@ or appear only after a tool search — search for "priorbit" or "patent").
 | `lookup_classes` | validate CPC / design class codes, find design classes by article name |
 | `search_trademarks` / `get_marks` | US marks by wording (`similar`, `sounds_like`, `exact`, `contains`), design code or owner; full records |
 | `fetch_product_page` | product facts from Amazon, Shopify, 1688, Taobao — `view_images` returns the photos on one labelled overview image (E-IMG ids), `documents` finds manual PDFs (5 credits a page; cached repeats are free) — try it first on these marketplaces; use the web for anything else about the product |
-| `get_search_log` / `get_playbook` | audit trail of the task; workflows and coverage |
+| `get_search_log` / `get_playbook` | audit trail of the task; workflows and coverage; `get_playbook("glossary", field=…, terms=[…])` — Chinese → English patent terms by technical field (general claim wording, mechanical, chemistry, electronics, software, medical devices …) with common mistranslations to avoid |
 
 ## Standards
 

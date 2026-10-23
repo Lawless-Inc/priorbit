@@ -82,6 +82,10 @@ https://uselawless.com/pricing . Personal API keys issued by Lawless keep workin
 
 > Knockout search for the mark VOLTREK in classes 9 and 12 — include marks that sound the same but are spelled differently.
 
+> Turn Chinese application CN 2025XXXXXXXXX.X into a US filing: deadline and route, translated specification, claims reworked for US practice.
+
+> Draft a US application for this invention disclosure, with claims drawn around the closest prior art.
+
 Results are research leads for an attorney, not legal opinions.
 
 ## CLI and Python SDK
