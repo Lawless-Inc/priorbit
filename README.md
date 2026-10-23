@@ -68,8 +68,8 @@ Then copy [SKILL.md](skills/priorbit/SKILL.md) into your client's rules or skill
 ## Account and plans
 
 Every call needs a signed-in uselawless.com account. **Go** is free: 200 credits a month (a status check is 1 credit, a search 2, a product page 5,
-playbooks free; enough for status checks and a dozen knockout searches, while a full FTO screening needs Plus). Paid plans are one tenth of their standard rate
-during the beta: **Plus** $5.90 for 20,000 credits, **Professional** $19.90 for 80,000. Details and billing terms:
+playbooks free; enough for status checks and a dozen knockout searches, while a full FTO screening needs Plus). **Plus** is $19.90 a month or $199 a year
+for 1,500 credits a month; **Professional** is $59 a month or $590 a year for 6,000. Details and billing terms:
 https://uselawless.com/pricing . Personal API keys issued by Lawless keep working (`…/mcp?key=YOUR_KEY`).
 
 ## Try
