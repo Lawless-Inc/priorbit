@@ -44,7 +44,7 @@ def _post(path, body):
 @mcp.tool()
 def env_reset(family: str = "", task_id: str = "", seed: int | None = None, config: dict | None = None) -> str:
     """Start a new episode. family: tro_product2patent | brand2patents | prosecution | '' (random). task_id picks one task
-    (see env_tasks). config (optional): {"as_of": "YYYY-MM-DD" | "knowable" | "knowable-30d", "snapshot": "on"|"off",
+    (see env_tasks). config (optional): {"as_of": "YYYY-MM-DD" | "knowable" | "knowable+30d", "snapshot": "on"|"off",
     "max_steps": 1..200, "tools": [...subset...], "reward": "strict"|"recall"|{...}}. Returns the task (prompt, images,
     as_of) and the episode id (kept for you; env_step / env_submit use it automatically)."""
     body = {"agent": AGENT}
@@ -63,6 +63,15 @@ def env_reset(family: str = "", task_id: str = "", seed: int | None = None, conf
 
 
 @mcp.tool()
+def env_tools() -> str:
+    """The environment's tools with argument JSON Schemas, which arguments matter first, which the environment overrides,
+    and ready-made example calls per tool (placeholders {product} {product_short} {entity} = fill from the task). Read
+    this once before env_step."""
+    with urllib.request.urlopen(urllib.request.Request(BASE + "/env/tools"), timeout=60) as r:
+        return r.read().decode()
+
+
+@mcp.tool()
 def env_tasks(family: str = "") -> str:
     """List the task catalogue (ids, family, default as_of, label; no answers) so a fixed set can be replayed."""
     req = urllib.request.Request(BASE + "/env/tasks" + (f"?family={family}" if family else ""))
@@ -73,8 +82,12 @@ def env_tasks(family: str = "") -> str:
 @mcp.tool()
 def env_step(tool: str, args: dict, episode_id: str = ""):
     """One action: call a Priorbit tool inside the episode. tool = search_patents | get_patents | search_trademarks |
-    get_marks | resolve_owner | lookup_classes | get_drawings | get_playbook; args = that tool's arguments (e.g.
-    {"queries": ["magnetic phone mount"], "k": 30}). The observation is filtered to the task's as_of date."""
+    get_marks | resolve_owner | lookup_classes | get_drawings | get_playbook; args = that tool's arguments.
+    Examples: search_patents {"queries": ["magnetic phone mount"], "k": 30} · search_patents {"queries": ["phone mount"],
+    "patent_type": "design"} · get_patents {"patent_numbers": ["D853642", "10308005"], "parts": ["summary", "claims"]} ·
+    resolve_owner {"name": "Dyson Technology Limited"} · lookup_classes {"query": "door security bar"} · get_drawings
+    {"patent_number": "D853642"}. env_tools() lists every argument and more examples. The observation is filtered to the
+    task's as_of date (unless the episode config turned the snapshot off)."""
     eid = episode_id or _STATE["episode_id"]
     if not eid:
         return json.dumps({"error": "call env_reset first"})
