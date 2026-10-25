@@ -42,9 +42,11 @@ def _post(path, body):
 
 
 @mcp.tool()
-def env_reset(family: str = "", task_id: str = "", seed: int | None = None) -> str:
-    """Start a new episode. family: tro_product2patent | brand2patents | prosecution | '' (random). Returns the task
-    (prompt, images, as_of) and the episode id (kept for you; env_step / env_submit use it automatically)."""
+def env_reset(family: str = "", task_id: str = "", seed: int | None = None, config: dict | None = None) -> str:
+    """Start a new episode. family: tro_product2patent | brand2patents | prosecution | '' (random). task_id picks one task
+    (see env_tasks). config (optional): {"as_of": "YYYY-MM-DD" | "knowable" | "knowable-30d", "snapshot": "on"|"off",
+    "max_steps": 1..200, "tools": [...subset...], "reward": "strict"|"recall"|{...}}. Returns the task (prompt, images,
+    as_of) and the episode id (kept for you; env_step / env_submit use it automatically)."""
     body = {"agent": AGENT}
     if family:
         body["family"] = family
@@ -52,10 +54,20 @@ def env_reset(family: str = "", task_id: str = "", seed: int | None = None) -> s
         body["task_id"] = task_id
     if seed is not None:
         body["seed"] = seed
+    if config:
+        body["config"] = config
     r = _post("/env/reset", body)
     if r.get("episode_id"):
         _STATE["episode_id"] = r["episode_id"]
-    return json.dumps({k: r.get(k) for k in ("episode_id", "task_id", "family", "as_of", "as_of_basis", "max_steps", "task", "error")}, ensure_ascii=False, indent=1)
+    return json.dumps({k: r.get(k) for k in ("episode_id", "task_id", "family", "as_of", "as_of_basis", "max_steps", "config", "task", "error")}, ensure_ascii=False, indent=1)
+
+
+@mcp.tool()
+def env_tasks(family: str = "") -> str:
+    """List the task catalogue (ids, family, default as_of, label; no answers) so a fixed set can be replayed."""
+    req = urllib.request.Request(BASE + "/env/tasks" + (f"?family={family}" if family else ""))
+    with urllib.request.urlopen(req, timeout=60) as r:
+        return r.read().decode()
 
 
 @mcp.tool()
