@@ -10,7 +10,7 @@ US trademarks in every status, owners and inventors linked across both, live USP
 prosecution file wrappers (office actions and responses as page images), PTAB trials, and e-commerce product pages. One plugin gives your agent the MCP tools **and** a skill that tells it to use them
 for patent and trademark work. Sign in once with a free account.
 
-Read the skill: [SKILL.md](skills/priorbit/SKILL.md)
+Read the skill: [SKILL.md](skills/priorbit/SKILL.md). The plugin also includes [patent-drawing](skills/patent-drawing/SKILL.md): your agent writes its own code to draw patent figures, renders them, looks at the result and corrects it.
 
 ## Install
 

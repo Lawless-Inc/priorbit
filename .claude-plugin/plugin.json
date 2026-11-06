@@ -1,7 +1,7 @@
 {
   "name": "priorbit",
-  "version": "0.4.6",
-  "description": "Priorbit IP database for agents: US patents, applications, trademarks, owners and inventors over MCP, plus a skill that routes patent and trademark work to it.",
+  "version": "0.4.7",
+  "description": "Priorbit IP database for agents: US patents, applications, trademarks, owners and inventors over MCP, plus a skill that routes patent and trademark work to it and a skill for drawing patent figures in code.",
   "author": {
     "name": "Lawless",
     "url": "https://uselawless.com"

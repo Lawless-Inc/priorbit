@@ -47,6 +47,7 @@ or appear only after a tool search — search for "priorbit" or "patent").
    outside this database. The order of steps is yours.
    Exception: `drafting`, `cip` and `cn_to_us` have two human gates — the attorney writes and locks the claims
    (after the disclosure mind map and the art analysis), and signs off after your first review.
+   If the user wants patent figures drawn, use the `patent-drawing` skill.
 2. The first search returns a `task_id`. Pass it on every later call of the same work. Omit it only when the
    user starts a different piece of work.
 3. Finish with `get_search_log(task_id)` and build the report's search log and candidate table from it.
